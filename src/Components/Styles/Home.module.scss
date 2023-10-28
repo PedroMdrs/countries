@@ -1,19 +1,6 @@
 @use "../../gaps" as *;
 @use "../../mixins" as *;
 
-body[data-theme="dark"] .card,
-body[data-theme="dark"] .form input,
-body[data-theme="dark"] .form .regions > div {
-  box-shadow: 0 0 20px 0px hsla(200, 15%, 8%, 0.514);
-}
-
-body[data-theme="light"] .card,
-body[data-theme="light"] .form input,
-body[data-theme="light"] .form .regions > div,
-body[data-theme="light"] .form .regions > ul {
-  box-shadow: 0 0 20px 1px hsla(0, 0%, 52%, 0.212);
-}
-
 .form {
   display: flex;
   flex-direction: column;
@@ -30,6 +17,7 @@ body[data-theme="light"] .form .regions > ul {
     border: none;
     border-radius: 5px;
     @include themify("background", "card");
+    @include themify("box-shadow", "box-shadow");
     padding: $gap2 $gap2;
   }
   .search {

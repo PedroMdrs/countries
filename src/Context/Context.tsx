@@ -1,7 +1,7 @@
 import React from "react";
 
 type theme = "light" | "dark";
-export interface countrie {
+export interface country {
   name: {
     common: string;
     official: string;
@@ -30,13 +30,14 @@ export interface countrie {
     alt: string;
   };
   borders: string[];
+  tld: string[];
 }
 
 interface IMainContext {
   theme: theme;
   setTheme: React.Dispatch<React.SetStateAction<theme>>;
-  countries: countrie[];
-  setCountries: React.Dispatch<React.SetStateAction<countrie[]>>;
+  countries: country[];
+  setCountries: React.Dispatch<React.SetStateAction<country[]>>;
 }
 
 const MainContext = React.createContext<null | IMainContext>(null);
@@ -73,7 +74,7 @@ export const ContextProvider = ({ children }: React.PropsWithChildren) => {
     if (!localTheme) return "light";
     return JSON.parse(localTheme) === "dark" ? "dark" : "light";
   });
-  const [countries, setCountries] = React.useState<countrie[]>([]);
+  const [countries, setCountries] = React.useState<country[]>([]);
 
   React.useEffect(() => {
     const localTheme = localStorage.getItem("theme");
@@ -93,7 +94,7 @@ export const ContextProvider = ({ children }: React.PropsWithChildren) => {
       ).then((data) => data);
       const json = await data.json();
       const countries = json.filter(
-        (item: countrie) => item.independent === true
+        (item: country) => item.independent === true
       );
       setCountries(countries);
     }

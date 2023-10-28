@@ -1,4 +1,5 @@
 @use "colors" as *;
+@use "gaps" as *;
 
 $themes: (
   dark: $dark,
@@ -24,4 +25,13 @@ $themes: (
     font-size: 24px;
     font-weight: 800;
   }
+}
+
+@mixin button {
+  padding: $gap1 $gap2;
+  outline: none;
+  border: none;
+  @include themify("box-shadow", "box-shadow");
+  @include themify("background", "card");
+  @include themify("color", "description");
 }

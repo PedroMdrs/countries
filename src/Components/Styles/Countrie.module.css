@@ -1,0 +1,118 @@
+.back {
+  position: relative;
+}
+.back a {
+  padding: 8px 16px;
+  outline: none;
+  border: none;
+  width: -moz-fit-content;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 32px 16px;
+}
+.back a.dark {
+  box-shadow: 0 0 20px 0px hsla(200, 15%, 8%, 0.514);
+}
+.back a.light {
+  box-shadow: 0 0 20px 1px hsla(0, 0%, 52%, 0.212);
+}
+.back a.dark {
+  background: hsl(209, 23%, 22%);
+}
+.back a.light {
+  background: hsl(0, 0%, 100%);
+}
+.back a.dark {
+  color: hsl(0, 0%, 98%);
+}
+.back a.light {
+  color: hsl(200, 15%, 8%);
+}
+.back a svg {
+  width: 20px;
+  fill: currentColor;
+}
+
+.countrie {
+  display: flex;
+  flex-direction: column;
+  margin: auto 32px;
+}
+.countrie.dark {
+  color: hsl(0, 0%, 98%);
+}
+.countrie.light {
+  color: hsl(200, 15%, 8%);
+}
+.countrie .description {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin-top: 32px;
+}
+.countrie .description > p {
+  font-size: 24px;
+  font-weight: 800;
+}
+.countrie .description > div {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.countrie .description > div > p {
+  font-size: 16px;
+  font-weight: 600;
+}
+.countrie .description > div span {
+  font-size: 14px;
+  font-weight: 300;
+}
+.countrie .description > div .languages,
+.countrie .description > div .currencies {
+  display: flex;
+  align-items: center;
+  white-space: pre-wrap;
+}
+.countrie .description > div .languages > .language,
+.countrie .description > div .currencies > .currencie {
+  font-size: 14px;
+  font-weight: 300;
+}
+.countrie .description .borders > p {
+  font-size: 16px;
+  font-weight: 600;
+}
+.countrie .description .borders ul {
+  width: 100%;
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.countrie .description .borders li {
+  padding: 8px 16px;
+  outline: none;
+  border: none;
+  text-align: center;
+}
+.countrie .description .borders li.dark {
+  box-shadow: 0 0 20px 0px hsla(200, 15%, 8%, 0.514);
+}
+.countrie .description .borders li.light {
+  box-shadow: 0 0 20px 1px hsla(0, 0%, 52%, 0.212);
+}
+.countrie .description .borders li.dark {
+  background: hsl(209, 23%, 22%);
+}
+.countrie .description .borders li.light {
+  background: hsl(0, 0%, 100%);
+}
+.countrie .description .borders li.dark {
+  color: hsl(0, 0%, 98%);
+}
+.countrie .description .borders li.light {
+  color: hsl(200, 15%, 8%);
+}/*# sourceMappingURL=Countrie.module.css.map */

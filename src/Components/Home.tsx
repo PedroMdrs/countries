@@ -1,5 +1,5 @@
 import styles from "./Styles/Home.module.css";
-import { countrie, useCountries, useTheme } from "../Context/Context";
+import { country, useCountries, useTheme } from "../Context/Context";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 const Home = () => {
@@ -9,7 +9,7 @@ const Home = () => {
   const [region, setRegion] = React.useState("");
   const [search, setSearch] = React.useState("");
   const [regionCountries, setRegionCountries] = React.useState<
-    countrie[] | null
+    country[] | null
   >(countries);
   const countriesRef = React.useRef(countries);
   const navigate = useNavigate();
@@ -23,7 +23,7 @@ const Home = () => {
   }, [countries]);
 
   React.useEffect(() => {
-    function filterCountriesPerRegion(countries: countrie[]) {
+    function filterCountriesPerRegion(countries: country[]) {
       if (region === "All" || region === "") return countries;
       return countries.filter((countrie) => countrie.region === region);
     }
@@ -31,7 +31,7 @@ const Home = () => {
   }, [region]);
 
   React.useEffect(() => {
-    function searchCountrie(countries: countrie[]) {
+    function searchCountrie(countries: country[]) {
       if (search === "") return countries;
 
       const searchedCountries = countries.filter((countrie) =>
@@ -43,6 +43,7 @@ const Home = () => {
     }
     setRegionCountries(searchCountrie(countriesRef.current));
   }, [search]);
+
   return (
     <div>
       <div>

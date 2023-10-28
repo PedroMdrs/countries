@@ -1,0 +1,75 @@
+@use "../../gaps" as *;
+@use "../../mixins" as *;
+
+.back {
+  position: relative;
+
+  a {
+    @include button;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $gap2;
+    margin: $gap3 $gap2;
+    svg {
+      width: 20px;
+      fill: currentColor;
+    }
+  }
+}
+
+.countrie {
+  display: flex;
+  flex-direction: column;
+  margin: auto $gap3;
+  @include themify("color", "description");
+
+  .description {
+    display: flex;
+    flex-direction: column;
+    gap: $gap3;
+    margin-top: $gap3;
+    > p {
+      @include text("title");
+    }
+    > div {
+      display: flex;
+      flex-direction: column;
+      gap: $gap1;
+      > p {
+        @include text("subtitle");
+      }
+
+      span {
+        @include text("desc");
+      }
+      .languages,
+      .currencies {
+        display: flex;
+        align-items: center;
+        white-space: pre-wrap;
+      }
+      .languages > .language,
+      .currencies > .currencie {
+        @include text("desc");
+      }
+    }
+    .borders {
+      > p {
+        @include text("subtitle");
+      }
+      ul {
+        width: 100%;
+        display: flex;
+        flex: 1;
+        flex-wrap: wrap;
+        gap: $gap1;
+      }
+      li {
+        @include button;
+        text-align: center;
+      }
+    }
+  }
+}

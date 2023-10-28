@@ -14,6 +14,7 @@ $dark: (
   icon: $g3,
   inputText: $g2,
   hover: $p2,
+  box-shadow: 0 0 20px 0px hsla(200, 15%, 8%, 0.514),
 );
 $light: (
   border: $g1,
@@ -24,4 +25,5 @@ $light: (
   icon: $g1,
   inputText: $g1,
   hover: $g1,
+  box-shadow: 0 0 20px 1px hsla(0, 0%, 52%, 0.212),
 );
