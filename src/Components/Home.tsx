@@ -8,10 +8,10 @@ const Home = () => {
   const [dropdown, setDropDown] = React.useState(false);
   const [region, setRegion] = React.useState("");
   const [search, setSearch] = React.useState("");
-  const [regionCountries, setRegionCountries] = React.useState<
-    country[] | null
-  >(countries);
+  const [regionCountries, setRegionCountries] =
+    React.useState<country[]>(countries);
   const countriesRef = React.useRef(countries);
+  const regionCountriesRef = React.useRef(regionCountries);
   const navigate = useNavigate();
 
   React.useEffect(() => {
@@ -22,21 +22,34 @@ const Home = () => {
     setRegionCountries(countries);
   }, [countries]);
 
+  const filterCountriesPerRegion = React.useCallback(
+    (countries: country[]) => {
+      if (region === "All" || region === "") return countries;
+      console.log("exec");
+
+      return countries.filter((countrie) => countrie.region === region);
+    },
+    [region]
+  );
+  const filterCountriesPerRegionRef = React.useRef(filterCountriesPerRegion);
+  React.useEffect(() => {
+    filterCountriesPerRegionRef.current = filterCountriesPerRegion;
+    setRegionCountries(filterCountriesPerRegion(countriesRef.current));
+  }, [region, filterCountriesPerRegion]);
   // filter countries per region
   React.useEffect(() => {
-    function filterCountriesPerRegion(countries: country[]) {
-      if (region === "All" || region === "") return countries;
-      return countries.filter((countrie) => countrie.region === region);
-    }
-    setRegionCountries(filterCountriesPerRegion(countriesRef.current));
+    setRegionCountries(
+      filterCountriesPerRegionRef.current(countriesRef.current)
+    );
   }, [region]);
 
   // search countrie
   React.useEffect(() => {
     function searchCountrie(countries: country[]) {
-      if (search === "") return countries;
+      if (search === "")
+        return filterCountriesPerRegionRef.current(countriesRef.current);
 
-      const searchedCountries = countries.filter((countrie) =>
+      const searchedCountries = regionCountriesRef.current.filter((countrie) =>
         countrie.name.common.toLowerCase().startsWith(search.toLowerCase())
       );
 
