@@ -1,0 +1,27 @@
+$p1: hsl(209, 23%, 22%);
+$p2: hsl(207, 26%, 17%);
+$p3: hsl(200, 15%, 8%);
+$g1: hsl(0, 0%, 52%);
+$g2: hsl(0, 0%, 98%);
+$g3: hsl(0, 0%, 100%);
+
+$dark: (
+  border: $p1,
+  card: $p1,
+  title: $g3,
+  description: $g2,
+  header: $p1,
+  icon: $g3,
+  inputText: $g2,
+  hover: $p2,
+);
+$light: (
+  border: $g1,
+  card: $g3,
+  title: $p3,
+  description: $p3,
+  header: $g3,
+  icon: $g1,
+  inputText: $g1,
+  hover: $g1,
+);

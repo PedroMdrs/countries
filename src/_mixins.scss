@@ -1,0 +1,27 @@
+@use "colors" as *;
+
+$themes: (
+  dark: $dark,
+  light: $light,
+);
+
+@mixin themify($property, $key) {
+  @each $theme, $color in $themes {
+    &.#{$theme} {
+      #{$property}: map-get($color, $key);
+    }
+  }
+}
+
+@mixin text($type: "desc") {
+  @if $type == "desc" {
+    font-size: 14px;
+    font-weight: 300;
+  } @else if $type == "subtitle" {
+    font-size: 16px;
+    font-weight: 600;
+  } @else if $type == "title" {
+    font-size: 24px;
+    font-weight: 800;
+  }
+}

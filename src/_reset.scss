@@ -1,0 +1,39 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  overflow-x: hidden;
+  margin: 0px;
+}
+
+h1,
+h2,
+h3,
+h3,
+p {
+  margin: 0px;
+}
+a,
+a:visited {
+  color: initial;
+  text-decoration: none;
+}
+
+ul,
+li {
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+button,
+input {
+  display: block;
+}

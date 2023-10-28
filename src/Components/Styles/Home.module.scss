@@ -1,0 +1,133 @@
+@use "../../gaps" as *;
+@use "../../mixins" as *;
+
+body[data-theme="dark"] .card,
+body[data-theme="dark"] .form input,
+body[data-theme="dark"] .form .regions > div {
+  box-shadow: 0 0 20px 0px hsla(200, 15%, 8%, 0.514);
+}
+
+body[data-theme="light"] .card,
+body[data-theme="light"] .form input,
+body[data-theme="light"] .form .regions > div,
+body[data-theme="light"] .form .regions > ul {
+  box-shadow: 0 0 20px 1px hsla(0, 0%, 52%, 0.212);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: $gap3;
+  padding: 0 $gap2;
+  margin-top: $gap3;
+  width: 100%;
+  position: relative;
+
+  .search input,
+  .regions > div,
+  .regions > ul {
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    @include themify("background", "card");
+    padding: $gap2 $gap2;
+  }
+  .search {
+    @include themify("color", "inputText");
+    position: relative;
+  }
+
+  .search input {
+    width: 100%;
+    padding: $gap2 0 $gap2 $gap4;
+    position: relative;
+    @include themify("color", "inputText");
+    &::placeholder {
+      color: currentColor;
+      fill: currentColor;
+    }
+  }
+  .search svg {
+    width: 20px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: $gap3;
+  }
+  .regions {
+    cursor: pointer;
+    width: 70%;
+    position: relative;
+    @include themify("color", "description");
+    @include text("subtitle");
+    > div {
+      position: relative;
+      padding: $gap2 $gap3;
+      svg {
+        position: absolute;
+        right: $gap2;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 15px;
+        fill: currentColor;
+      }
+    }
+    > ul {
+      width: 100%;
+      margin-top: $gap0;
+      padding: $gap2 $gap3;
+      position: absolute;
+      display: none;
+      flex-direction: column;
+      gap: $gap1;
+      li {
+        cursor: pointer;
+      }
+    }
+  }
+}
+.countries {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: 1fr;
+  gap: $gap4;
+  margin-top: $gap5;
+  padding: 0 $gap3;
+}
+
+.card {
+  display: grid;
+  width: 100%;
+  border-radius: 5px;
+  grid-template-rows: 1fr 1fr;
+  @include themify("color", "title");
+  @include themify("background", "card");
+  @include themify("border-color", "border");
+  .flag {
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+  }
+  .description {
+    padding: $gap3;
+    display: flex;
+    flex-direction: column;
+    gap: $gap2;
+    > p {
+      @include text("title");
+    }
+    > div p {
+      @include text("subtitle");
+    }
+    > div span {
+      @include text("subtitle");
+      font-weight: 300;
+    }
+  }
+}
+
+.active {
+  display: flex !important;
+}

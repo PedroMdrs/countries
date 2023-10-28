@@ -1,0 +1,45 @@
+@use "../../gaps" as *;
+@use "../../colors" as *;
+@use "../../mixins" as *;
+
+body[data-theme="dark"] header {
+  box-shadow: 0 1px 4px 1px hsla(200, 15%, 8%, 0.24);
+}
+body[data-theme="light"] header {
+  box-shadow: 0 1px 4px 1px hsla(0, 0%, 52%, 0.212);
+}
+
+.header {
+  width: 100%;
+  padding: $gap3 $gap2;
+  @include themify("background", "header");
+
+  ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    a {
+      cursor: pointer;
+      @include themify("color", "title");
+      @include text("subtitle");
+      font-weight: 800;
+    }
+    li > div {
+      cursor: pointer;
+      display: flex;
+      align-items: start;
+      gap: $gap1;
+      div {
+        width: 16px;
+        @include themify("color", "title");
+        svg {
+          color: currentColor;
+        }
+      }
+      p {
+        @include text("subtitle");
+        @include themify("color", "title");
+      }
+    }
+  }
+}

@@ -1,0 +1,63 @@
+body[data-theme=dark] header {
+  box-shadow: 0 1px 4px 1px hsla(200, 15%, 8%, 0.24);
+}
+
+body[data-theme=light] header {
+  box-shadow: 0 1px 4px 1px hsla(0, 0%, 52%, 0.212);
+}
+
+.header {
+  width: 100%;
+  padding: 32px 16px;
+}
+.header.dark {
+  background: hsl(209, 23%, 22%);
+}
+.header.light {
+  background: hsl(0, 0%, 100%);
+}
+.header ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header ul a {
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  font-weight: 800;
+}
+.header ul a.dark {
+  color: hsl(0, 0%, 100%);
+}
+.header ul a.light {
+  color: hsl(200, 15%, 8%);
+}
+.header ul li > div {
+  cursor: pointer;
+  display: flex;
+  align-items: start;
+  gap: 8px;
+}
+.header ul li > div div {
+  width: 16px;
+}
+.header ul li > div div.dark {
+  color: hsl(0, 0%, 100%);
+}
+.header ul li > div div.light {
+  color: hsl(200, 15%, 8%);
+}
+.header ul li > div div svg {
+  color: currentColor;
+}
+.header ul li > div p {
+  font-size: 16px;
+  font-weight: 600;
+}
+.header ul li > div p.dark {
+  color: hsl(0, 0%, 100%);
+}
+.header ul li > div p.light {
+  color: hsl(200, 15%, 8%);
+}/*# sourceMappingURL=Header.module.css.map */
