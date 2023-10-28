@@ -8,55 +8,67 @@ const Home = () => {
   const [dropdown, setDropDown] = React.useState(false);
   const [region, setRegion] = React.useState("");
   const [search, setSearch] = React.useState("");
-  const [regionCountries, setRegionCountries] =
-    React.useState<country[]>(countries);
+  const [regionCountries, setRegionCountries] = React.useState<
+    country[] | null
+  >(countries);
   const countriesRef = React.useRef(countries);
   const regionCountriesRef = React.useRef(regionCountries);
+  const regionRef = React.useRef(region);
   const navigate = useNavigate();
 
   React.useEffect(() => {
     countriesRef.current = countries;
   }, [countries]);
+  React.useEffect(() => {
+    regionCountriesRef.current = regionCountries;
+  }, [regionCountries]);
 
   React.useEffect(() => {
     setRegionCountries(countries);
   }, [countries]);
 
-  const filterCountriesPerRegion = React.useCallback(
-    (countries: country[]) => {
-      if (region === "All" || region === "") return countries;
-      console.log("exec");
-
-      return countries.filter((countrie) => countrie.region === region);
-    },
-    [region]
-  );
-  const filterCountriesPerRegionRef = React.useRef(filterCountriesPerRegion);
-  React.useEffect(() => {
-    filterCountriesPerRegionRef.current = filterCountriesPerRegion;
-    setRegionCountries(filterCountriesPerRegion(countriesRef.current));
-  }, [region, filterCountriesPerRegion]);
   // filter countries per region
   React.useEffect(() => {
-    setRegionCountries(
-      filterCountriesPerRegionRef.current(countriesRef.current)
-    );
+    function filterCountriesPerRegion(countries: country[]) {
+      if (region === "All" || region === "") return countries;
+      return countries.filter((countrie) => countrie.region === region);
+    }
+    setRegionCountries(filterCountriesPerRegion(countriesRef.current));
   }, [region]);
 
   // search countrie
   React.useEffect(() => {
-    function searchCountrie(countries: country[]) {
-      if (search === "")
-        return filterCountriesPerRegionRef.current(countriesRef.current);
+    function filterCountriesPerRegion(countries: country[]) {
+      if (regionRef.current === "All" || regionRef.current === "")
+        return countries;
+      return countries.filter(
+        (countrie) => countrie.region === regionRef.current
+      );
+    }
 
-      const searchedCountries = regionCountriesRef.current.filter((countrie) =>
+    setRegionCountries(countriesRef.current);
+    console.log(regionCountriesRef.current);
+    console.log("RegionCountries setado para todos os paises");
+
+    if (regionCountriesRef.current) {
+      filterCountriesPerRegion(regionCountriesRef.current);
+      console.log("RegionCountries filtrado");
+    }
+    function searchCountrie(countries: country[]) {
+      if (search === "") return countries;
+      console.log(countries);
+      const searchedCountries = countries.filter((countrie) =>
         countrie.name.common.toLowerCase().startsWith(search.toLowerCase())
       );
 
       if (searchedCountries.length === 0) return null;
+      console.log("searchCountrie executado");
       return searchedCountries;
     }
-    setRegionCountries(searchCountrie(countriesRef.current));
+    if (regionCountriesRef.current) {
+      setRegionCountries(searchCountrie(regionCountriesRef.current));
+      console.log("setregion setado novamente");
+    }
   }, [search]);
 
   return (
