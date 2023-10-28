@@ -22,6 +22,7 @@ const Home = () => {
     setRegionCountries(countries);
   }, [countries]);
 
+  // filter countries per region
   React.useEffect(() => {
     function filterCountriesPerRegion(countries: country[]) {
       if (region === "All" || region === "") return countries;
@@ -30,6 +31,7 @@ const Home = () => {
     setRegionCountries(filterCountriesPerRegion(countriesRef.current));
   }, [region]);
 
+  // search countrie
   React.useEffect(() => {
     function searchCountrie(countries: country[]) {
       if (search === "") return countries;
@@ -45,101 +47,99 @@ const Home = () => {
   }, [search]);
 
   return (
-    <div>
-      <div>
-        <form className={`${styles[theme]} ${styles.form}`}>
-          <div className={`${styles[theme]} ${styles.search}`}>
-            <input
-              className={styles[theme]}
-              type="text"
-              placeholder="Search for a country..."
-              onChange={({ target }) => setSearch(target.value)}
+    <div className={styles.content}>
+      <form className={`${styles[theme]} ${styles.form}`}>
+        <div className={`${styles[theme]} ${styles.search}`}>
+          <input
+            className={styles[theme]}
+            type="text"
+            placeholder="Search for a country..."
+            onChange={({ target }) => setSearch(target.value)}
+          />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="ionicon"
+            viewBox="0 0 512 512"
+          >
+            <path
+              d="M221.09 64a157.09 157.09 0 10157.09 157.09A157.1 157.1 0 00221.09 64z"
+              fill="none"
+              stroke="currentColor"
+              strokeMiterlimit="10"
+              strokeWidth="50"
             />
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="ionicon"
-              viewBox="0 0 512 512"
-            >
-              <path
-                d="M221.09 64a157.09 157.09 0 10157.09 157.09A157.1 157.1 0 00221.09 64z"
-                fill="none"
-                stroke="currentColor"
-                strokeMiterlimit="10"
-                strokeWidth="50"
-              />
-              <path
-                fill="none"
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeMiterlimit="10"
-                strokeWidth="50"
-                d="M338.29 338.29L448 448"
-              />
+            <path
+              fill="none"
+              stroke="currentColor"
+              strokeLinecap="round"
+              strokeMiterlimit="10"
+              strokeWidth="50"
+              d="M338.29 338.29L448 448"
+            />
+          </svg>
+        </div>
+        <div className={`${styles[theme]} ${styles.regions}`}>
+          <div
+            onClick={() => setDropDown((value) => !value)}
+            className={styles[theme]}
+          >
+            <p>{region === "" ? "Filter by Region" : region}</p>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+              <path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" />
             </svg>
           </div>
-          <div className={`${styles[theme]} ${styles.regions}`}>
-            <div
-              onClick={() => setDropDown((value) => !value)}
-              className={styles[theme]}
+          <ul className={`${styles[theme]} ${dropdown ? styles.active : ""}`}>
+            <li
+              onClick={() => {
+                setRegion("All");
+                setDropDown(false);
+              }}
             >
-              <p>{region === "" ? "Filter by Region" : region}</p>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                <path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" />
-              </svg>
-            </div>
-            <ul className={`${styles[theme]} ${dropdown ? styles.active : ""}`}>
-              <li
-                onClick={() => {
-                  setRegion("All");
-                  setDropDown(false);
-                }}
-              >
-                All
-              </li>
-              <li
-                onClick={() => {
-                  setRegion("Africa");
-                  setDropDown(false);
-                }}
-              >
-                Africa
-              </li>
-              <li
-                onClick={() => {
-                  setRegion("Americas");
-                  setDropDown(false);
-                }}
-              >
-                America
-              </li>
-              <li
-                onClick={() => {
-                  setRegion("Asia");
-                  setDropDown(false);
-                }}
-              >
-                Asia
-              </li>
-              <li
-                onClick={() => {
-                  setRegion("Europe");
-                  setDropDown(false);
-                }}
-              >
-                Europe
-              </li>
-              <li
-                onClick={() => {
-                  setRegion("Oceania");
-                  setDropDown(false);
-                }}
-              >
-                Oceania
-              </li>
-            </ul>
-          </div>
-        </form>
-      </div>
+              All
+            </li>
+            <li
+              onClick={() => {
+                setRegion("Africa");
+                setDropDown(false);
+              }}
+            >
+              Africa
+            </li>
+            <li
+              onClick={() => {
+                setRegion("Americas");
+                setDropDown(false);
+              }}
+            >
+              America
+            </li>
+            <li
+              onClick={() => {
+                setRegion("Asia");
+                setDropDown(false);
+              }}
+            >
+              Asia
+            </li>
+            <li
+              onClick={() => {
+                setRegion("Europe");
+                setDropDown(false);
+              }}
+            >
+              Europe
+            </li>
+            <li
+              onClick={() => {
+                setRegion("Oceania");
+                setDropDown(false);
+              }}
+            >
+              Oceania
+            </li>
+          </ul>
+        </div>
+      </form>
       <ul className={styles.countries}>
         {regionCountries &&
           regionCountries.length > 0 &&

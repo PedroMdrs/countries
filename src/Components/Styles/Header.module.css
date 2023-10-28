@@ -58,4 +58,10 @@ body[data-theme=light] header {
 }
 .header ul li > div p.light {
   color: hsl(200, 15%, 8%);
+}
+
+@media (min-width: 1300px) {
+  .header {
+    padding: 32px 128px;
+  }
 }/*# sourceMappingURL=Header.module.css.map */

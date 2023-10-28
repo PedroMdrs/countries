@@ -42,3 +42,9 @@ body[data-theme="light"] header {
     }
   }
 }
+
+@media (min-width: 1300px) {
+  .header {
+    padding: $gap3 $gap5;
+  }
+}

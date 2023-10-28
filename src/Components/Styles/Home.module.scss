@@ -1,8 +1,15 @@
 @use "../../gaps" as *;
 @use "../../mixins" as *;
 
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 .form {
   display: flex;
+  justify-self: start;
+  align-self: self-start;
   flex-direction: column;
   gap: $gap3;
   padding: 0 $gap2;
@@ -48,6 +55,7 @@
     position: relative;
     @include themify("color", "description");
     @include text("desc");
+    z-index: 50;
     > div {
       position: relative;
       padding: $gap2 $gap3;
@@ -76,22 +84,29 @@
 }
 .countries {
   display: grid;
-  grid-template-columns: 1fr;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fill, minmax(min-content, 290px));
   grid-auto-rows: 1fr;
   gap: $gap4;
   margin-top: $gap4;
   padding: 0 $gap3;
+  overflow: hidden;
+  width: 100%;
 }
 
 .card {
+  cursor: pointer;
   display: grid;
-  width: 100%;
   border-radius: 5px;
   grid-template-rows: 1fr 1fr;
   @include themify("color", "title");
   @include themify("background", "card");
   @include themify("border-color", "border");
   @include themify("box-shadow", "box-shadow");
+  transition: opacity 0.2s;
+  &:hover {
+    opacity: 0.5;
+  }
   .flag {
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
@@ -104,6 +119,7 @@
     display: flex;
     flex-direction: column;
     gap: $gap2;
+    width: fit-content;
     > p {
       @include text("title");
     }
@@ -119,4 +135,23 @@
 
 .active {
   display: flex !important;
+}
+
+@media (min-width: 1300px) {
+  .form {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 $gap4;
+    .search {
+      width: 50%;
+    }
+    .regions {
+      width: 20%;
+    }
+  }
+  .countries {
+    justify-content: space-between;
+
+    padding: 0 $gap4;
+  }
 }
