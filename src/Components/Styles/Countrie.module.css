@@ -47,6 +47,18 @@
 .countrie.light {
   color: hsl(200, 15%, 8%);
 }
+.countrie .flag {
+  height: 200px;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+}
+.countrie .flag.dark {
+  box-shadow: 0 0 20px 0px hsla(200, 15%, 8%, 0.514);
+}
+.countrie .flag.light {
+  box-shadow: 0 0 20px 1px hsla(0, 0%, 52%, 0.212);
+}
 .countrie .description {
   display: flex;
   flex-direction: column;

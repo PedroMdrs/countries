@@ -23,8 +23,6 @@ body[data-theme=light] header {
 }
 .header ul a {
   cursor: pointer;
-  font-size: 16px;
-  font-weight: 600;
   font-weight: 800;
 }
 .header ul a.dark {
@@ -40,7 +38,7 @@ body[data-theme=light] header {
   gap: 8px;
 }
 .header ul li > div div {
-  width: 16px;
+  width: 12px;
 }
 .header ul li > div div.dark {
   color: hsl(0, 0%, 100%);
@@ -52,8 +50,8 @@ body[data-theme=light] header {
   color: currentColor;
 }
 .header ul li > div p {
-  font-size: 16px;
-  font-weight: 600;
+  font-size: 14px;
+  font-weight: 300;
 }
 .header ul li > div p.dark {
   color: hsl(0, 0%, 100%);

@@ -21,7 +21,6 @@ body[data-theme="light"] header {
     a {
       cursor: pointer;
       @include themify("color", "title");
-      @include text("subtitle");
       font-weight: 800;
     }
     li > div {
@@ -30,14 +29,14 @@ body[data-theme="light"] header {
       align-items: start;
       gap: $gap1;
       div {
-        width: 16px;
+        width: 12px;
         @include themify("color", "title");
         svg {
           color: currentColor;
         }
       }
       p {
-        @include text("subtitle");
+        @include text("desc");
         @include themify("color", "title");
       }
     }

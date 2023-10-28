@@ -24,7 +24,13 @@
   flex-direction: column;
   margin: auto $gap3;
   @include themify("color", "description");
-
+  .flag {
+    @include themify("box-shadow", "box-shadow");
+    height: 200px;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+  }
   .description {
     display: flex;
     flex-direction: column;

@@ -74,8 +74,8 @@
   cursor: pointer;
   width: 70%;
   position: relative;
-  font-size: 16px;
-  font-weight: 600;
+  font-size: 14px;
+  font-weight: 300;
 }
 .form .regions.dark {
   color: hsl(0, 0%, 98%);
@@ -113,7 +113,7 @@
   grid-template-columns: 1fr;
   grid-auto-rows: 1fr;
   gap: 64px;
-  margin-top: 128px;
+  margin-top: 64px;
   padding: 0 32px;
 }
 
@@ -140,6 +140,12 @@
 }
 .card.light {
   border-color: hsl(0, 0%, 52%);
+}
+.card.dark {
+  box-shadow: 0 0 20px 0px hsla(200, 15%, 8%, 0.514);
+}
+.card.light {
+  box-shadow: 0 0 20px 1px hsla(0, 0%, 52%, 0.212);
 }
 .card .flag {
   border-top-right-radius: 5px;

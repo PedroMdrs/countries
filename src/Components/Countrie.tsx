@@ -50,7 +50,12 @@ const Countrie = () => {
         </NavLink>
       </div>
       <div className={`${styles[theme]} ${styles.countrie}`}>
-        <img src={currentCountry[0].flags.png} alt="" />
+        <div
+          className={`${styles.flag} ${styles[theme]}`}
+          style={{
+            background: `URL(${currentCountry[0].flags.png})`,
+          }}
+        ></div>
         <div className={styles.description}>
           <p>
             <span>{currentCountry[0].name.common}</span>
