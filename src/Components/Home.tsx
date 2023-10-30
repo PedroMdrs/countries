@@ -2,21 +2,31 @@ import styles from "./Styles/Home.module.css";
 import { country, useCountries, useTheme } from "../Context/Context";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+
+function filterCountriesPerRegion(countries: country[], region: string) {
+  if (region === "All" || region === "") return countries;
+  return countries.filter((countrie) => countrie.region === region);
+}
+
 const Home = () => {
   const theme = useTheme();
   const countries = useCountries();
   const [dropdown, setDropDown] = React.useState(false);
   const [region, setRegion] = React.useState("");
   const [search, setSearch] = React.useState("");
-  const [regionCountries, setRegionCountries] = React.useState<
-    country[] | null
-  >(countries);
+  const [regionCountries, setRegionCountries] =
+    React.useState<country[]>(countries);
   const countriesRef = React.useRef(countries);
   const navigate = useNavigate();
-
+  const regionRef = React.useRef(region);
+  const regionCountriesRef = React.useRef(regionCountries);
   React.useEffect(() => {
     countriesRef.current = countries;
   }, [countries]);
+
+  React.useEffect(() => {
+    regionCountriesRef.current = regionCountries;
+  }, [regionCountries]);
 
   React.useEffect(() => {
     setRegionCountries(countries);
@@ -24,26 +34,42 @@ const Home = () => {
 
   // filter countries per region
   React.useEffect(() => {
-    function filterCountriesPerRegion(countries: country[]) {
-      if (region === "All" || region === "") return countries;
-      return countries.filter((countrie) => countrie.region === region);
-    }
-    setRegionCountries(filterCountriesPerRegion(countriesRef.current));
+    regionRef.current = region;
+    setRegionCountries(filterCountriesPerRegion(countriesRef.current, region));
   }, [region]);
 
-  // search countrie
+  // search country
   React.useEffect(() => {
-    function searchCountrie(countries: country[]) {
-      if (search === "") return countries;
+    function searchCountry(countries: country[]) {
+      if (search === "") {
+        setRegionCountries(
+          filterCountriesPerRegion(countriesRef.current, regionRef.current)
+        );
+        return;
+      }
 
-      const searchedCountries = countries.filter((countrie) =>
-        countrie.name.common.toLowerCase().startsWith(search.toLowerCase())
-      );
+      const searchedCountries = countriesRef.current.filter((country) => {
+        if (regionRef.current === "All" || regionRef.current === "") {
+          return country.name.common
+            .toLowerCase()
+            .startsWith(search.toLowerCase());
+        } else {
+          return (
+            country.region === regionRef.current &&
+            country.name.common.toLowerCase().startsWith(search.toLowerCase())
+          );
+        }
+      });
 
-      if (searchedCountries.length === 0) return null;
-      return searchedCountries;
+      if (searchedCountries.length === 0) {
+        setRegionCountries([]);
+        return;
+      }
+
+      setRegionCountries(searchedCountries);
     }
-    setRegionCountries(searchCountrie(countriesRef.current));
+
+    searchCountry(regionCountriesRef.current);
   }, [search]);
 
   return (

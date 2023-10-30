@@ -197,10 +197,13 @@
 }
 
 @media (min-width: 1300px) {
+  main {
+    padding: 0 64px;
+  }
   .form {
     flex-direction: row;
     justify-content: space-between;
-    padding: 0 64px;
+    padding: 0;
   }
   .form .search {
     width: 50%;
@@ -210,6 +213,6 @@
   }
   .countries {
     justify-content: space-between;
-    padding: 0 64px;
+    padding: 0;
   }
 }/*# sourceMappingURL=Home.module.css.map */

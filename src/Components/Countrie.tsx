@@ -61,65 +61,68 @@ const Countrie = () => {
             <span>{currentCountry[0].name.common}</span>
           </p>
           <div>
-            <p>
-              Native Name:{" "}
-              <span>
-                {
-                  currentCountry[0].name.nativeName[
-                    Object.keys(currentCountry[0].name.nativeName)[
-                      Object.keys(currentCountry[0].name.nativeName).length - 1
-                    ]
-                  ].common
-                }
-              </span>
-            </p>
-            <p>
-              Population:{" "}
-              <span>
-                {currentCountry[0].population.toLocaleString("pt-BR")}
-              </span>
-            </p>
-            <p>
-              Region: <span>{currentCountry[0].region}</span>
-            </p>
-            <p>
-              Sub Region: <span>{currentCountry[0].subregion}</span>
-            </p>
-            <p>
-              Capital: <span>{currentCountry[0].capital}</span>
-            </p>
-          </div>
-          <div>
-            <p>
-              Top Level Domain: <span>{currentCountry[0].tld[0]} </span>
-            </p>
-            <div className={styles.currencies}>
+            <div>
               <p>
-                Currencies:{" "}
-                {Object.keys(currentCountry[0].currencies).map(
-                  (currency, index, array) => (
-                    <span className={styles.currencie} key={currency}>
-                      {index === array.length - 1
-                        ? currentCountry[0].currencies[currency].name
-                        : `${currentCountry[0].currencies[currency].name}, `}
-                    </span>
-                  )
-                )}
+                Native Name:{" "}
+                <span>
+                  {
+                    currentCountry[0].name.nativeName[
+                      Object.keys(currentCountry[0].name.nativeName)[
+                        Object.keys(currentCountry[0].name.nativeName).length -
+                          1
+                      ]
+                    ].common
+                  }
+                </span>
+              </p>
+              <p>
+                Population:{" "}
+                <span>
+                  {currentCountry[0].population.toLocaleString("pt-BR")}
+                </span>
+              </p>
+              <p>
+                Region: <span>{currentCountry[0].region}</span>
+              </p>
+              <p>
+                Sub Region: <span>{currentCountry[0].subregion}</span>
+              </p>
+              <p>
+                Capital: <span>{currentCountry[0].capital}</span>
               </p>
             </div>
-            <div className={styles.languages}>
+            <div>
               <p>
-                Languages:{" "}
-                {Object.keys(currentCountry[0].languages).map(
-                  (language, index, array) => (
-                    <span className={styles.language} key={language}>
-                      {index === array.length - 1
-                        ? currentCountry[0].languages[language]
-                        : `${currentCountry[0].languages[language]}, `}
-                    </span>
-                  )
-                )}{" "}
+                Top Level Domain: <span>{currentCountry[0].tld[0]} </span>
               </p>
+              <div className={styles.currencies}>
+                <p>
+                  Currencies:{" "}
+                  {Object.keys(currentCountry[0].currencies).map(
+                    (currency, index, array) => (
+                      <span className={styles.currencie} key={currency}>
+                        {index === array.length - 1
+                          ? currentCountry[0].currencies[currency].name
+                          : `${currentCountry[0].currencies[currency].name}, `}
+                      </span>
+                    )
+                  )}
+                </p>
+              </div>
+              <div className={styles.languages}>
+                <p>
+                  Languages:{" "}
+                  {Object.keys(currentCountry[0].languages).map(
+                    (language, index, array) => (
+                      <span className={styles.language} key={language}>
+                        {index === array.length - 1
+                          ? currentCountry[0].languages[language]
+                          : `${currentCountry[0].languages[language]}, `}
+                      </span>
+                    )
+                  )}{" "}
+                </p>
+              </div>
             </div>
           </div>
           <div className={styles.borders}>

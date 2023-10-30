@@ -138,10 +138,13 @@
 }
 
 @media (min-width: 1300px) {
+  main {
+    padding: 0 $gap4;
+  }
   .form {
     flex-direction: row;
     justify-content: space-between;
-    padding: 0 $gap4;
+    padding: 0;
     .search {
       width: 50%;
     }
@@ -151,7 +154,6 @@
   }
   .countries {
     justify-content: space-between;
-
-    padding: 0 $gap4;
+    padding: 0;
   }
 }
