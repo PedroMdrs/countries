@@ -38,8 +38,6 @@ const Home = () => {
     setRegionCountries(filterCountriesPerRegion(countriesRef.current, region));
   }, [region]);
 
-  // search countrie
-  // search country
   // search country
   React.useEffect(() => {
     function searchCountry(countries: country[]) {
@@ -51,7 +49,7 @@ const Home = () => {
       }
 
       const searchedCountries = countriesRef.current.filter((country) => {
-        if (regionRef.current === "All") {
+        if (regionRef.current === "All" || regionRef.current === "") {
           return country.name.common
             .toLowerCase()
             .startsWith(search.toLowerCase());

@@ -11,7 +11,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  margin: 32px 16px;
+  margin: 32px;
 }
 .back a.dark {
   box-shadow: 0 0 20px 0px hsla(200, 15%, 8%, 0.514);
@@ -52,6 +52,7 @@
   background-size: cover !important;
   background-repeat: no-repeat !important;
   background-position: center !important;
+  max-width: 400px;
 }
 .countrie .flag.dark {
   box-shadow: 0 0 20px 0px hsla(200, 15%, 8%, 0.514);
@@ -74,7 +75,7 @@
   flex-direction: column;
   gap: 8px;
 }
-.countrie .description > div > p {
+.countrie .description > div p {
   font-size: 16px;
   font-weight: 600;
 }
@@ -127,4 +128,30 @@
 }
 .countrie .description .borders li.light {
   color: hsl(200, 15%, 8%);
+}
+
+@media (min-width: 1300px) {
+  .back a {
+    margin: 64px 0;
+  }
+  .countrie {
+    display: grid;
+    grid-template-columns: 600px auto;
+    margin: 0;
+    gap: 128px;
+    align-items: center;
+  }
+  .countrie .flag {
+    width: 100%;
+    max-width: 600px;
+    height: 400px;
+  }
+  .countrie .description > div {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .countrie .description .borders {
+    gap: 32px;
+    align-items: flex-start;
+  }
 }/*# sourceMappingURL=Countrie.module.css.map */

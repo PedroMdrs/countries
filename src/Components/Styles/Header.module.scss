@@ -10,7 +10,7 @@ body[data-theme="light"] header {
 }
 
 .header {
-  width: 100%;
+  width: 100vw;
   padding: $gap3 $gap2;
   @include themify("background", "header");
 
@@ -45,6 +45,6 @@ body[data-theme="light"] header {
 
 @media (min-width: 1300px) {
   .header {
-    padding: $gap3 $gap5;
+    padding: $gap3 $gap4;
   }
 }
