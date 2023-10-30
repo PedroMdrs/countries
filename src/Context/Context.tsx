@@ -100,6 +100,7 @@ export const ContextProvider = ({ children }: React.PropsWithChildren) => {
     }
     doFetch();
   }, []);
+
   const value = { theme, setTheme, countries, setCountries };
   return <MainContext.Provider value={value}>{children}</MainContext.Provider>;
 };

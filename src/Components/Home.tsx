@@ -173,7 +173,7 @@ const Home = () => {
             .sort((a, b) => a.name.common.localeCompare(b.name.common))
             .map((countrie) => (
               <li
-                onClick={() => navigate(`${countrie.name.common}`)}
+                onClick={() => navigate(`countrie/${countrie.name.common}`)}
                 className={`${styles.card} ${styles[theme]}`}
                 key={countrie.cca3}
               >

@@ -1,4 +1,4 @@
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import { country, useCountries, useTheme } from "../Context/Context";
 import React from "react";
 import styles from "./Styles/Countrie.module.css";
@@ -6,7 +6,7 @@ import styles from "./Styles/Countrie.module.css";
 const Countrie = () => {
   const theme = useTheme();
   const countries = useCountries();
-  const location = decodeURI(useLocation().pathname).slice(1);
+  const params = useParams();
   const [currentCountry, setCurrentCountry] = React.useState<null | country[]>(
     null
   );
@@ -30,9 +30,9 @@ const Countrie = () => {
   // Select country according to url
   React.useEffect(() => {
     setCurrentCountry(() =>
-      countries.filter((x) => x.name.common === location)
+      countries.filter((x) => x.name.common === params.id)
     );
-  }, [countries, location]);
+  }, [countries, params]);
 
   if (!currentCountry || currentCountry.length === 0) return;
   return (
